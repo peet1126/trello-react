@@ -1,7 +1,6 @@
 import React from "react";
 
 const Todos = ({ todos, deleteTodo, headers }) => {
-  let todoListId = 1;
   const todoList = todos.length ? (
     todos.map(todo => {
       return (
