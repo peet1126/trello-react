@@ -11,3 +11,21 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.howto .post img {
+  position: absolute;
+  top: -80px;
+  left: -90px;
+  height: 300px;
+  overflow: hidden;
+}
+
+.howto .post {
+  overflow: hidden;
+  padding-left: 300px;
+}
+
+.post {
+  background: rgb(227, 229, 230);
+}
+

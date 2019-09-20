@@ -1,29 +1,22 @@
 import React, { Component } from "react";
-import {Link} from "react-router-dom"
-import axios from "axios";
+import { Link } from "react-router-dom";
+import Bus from "../surf-bus.png";
+import { connect } from "react-redux";
 
 class HowTo extends Component {
-  state = {
-    posts: []
-  };
-  componentDidMount() {
-    axios.get("https://jsonplaceholder.typicode.com/posts").then(res => {
-      console.log(res);
-      this.setState({
-        posts: res.data.slice(0, 10)
-      });
-    });
-  }
   render() {
-    const { posts } = this.state;
+    const { posts } = this.props;
     const postList = posts.length ? (
       posts.map(post => {
         return (
           <div className="post card" key={post.id}>
+            <img src={Bus} alt="Van" />
             <div className="card-content">
-              <Link to={'/' + post.id}>
-                <span className="card-title">{post.title}</span>
-                <p>{post.body}</p>
+              <Link to={"/" + post.id}>
+                <span className="textColor card-title red-text">
+                  {post.title}
+                </span>
+                <p className="textColor blue-text">{post.body}</p>
               </Link>
             </div>
           </div>
@@ -33,7 +26,7 @@ class HowTo extends Component {
       <h3 className="center">There are no posts</h3>
     );
     return (
-      <div className="container">
+      <div className="container howto">
         <h1 className="center blue-text">Third party list</h1>
         {postList}
       </div>
@@ -41,4 +34,10 @@ class HowTo extends Component {
   }
 }
 
-export default HowTo;
+const mapStateToProps = state => {
+  return {
+    posts: state.posts
+  };
+};
+
+export default connect(mapStateToProps)(HowTo);
